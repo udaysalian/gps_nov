@@ -1,0 +1,68 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.oilgascs.gps"
+    },
+    "jhipsterVersion": "5.3.1",
+    "applicationType": "monolith",
+    "baseName": "netra",
+    "packageName": "com.oilgascs.gps",
+    "packageFolder": "com/oilgascs/gps",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "N2Q0YjI5YTU2NDQyNDQ0ODAwYjlhNDNlMzMwMmQwNTAyZjIxYjk4OGE5MjY4ODM4OWYxMzY2OGZlOTM4MjFhM2Y2MzE0ZjM5ZTkzNDgxOTNiN2U5N2UwZjFkMmE0M2I0NzcyYzc2ZTJiY2UxY2YzZDllYjQ1ZGZmZGIzYWEzMGE=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "gatling"
+    ],
+    "jhiPrefix": "jhi",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-nav-element",
+        "version": "2.0.7"
+      },
+      {
+        "name": "generator-jhipster-standalone-profile",
+        "version": "2.0.0"
+      },
+      {
+        "name": "generator-jhipster-primeng-charts",
+        "version": "1.1.0"
+      },
+      {
+        "name": "generator-jhipster-primeng",
+        "version": "2.0.66"
+      },
+      {
+        "name": "generator-jhipster-docker",
+        "version": "2.5.0"
+      },
+      {
+        "name": "generator-jhipster-audit-helper",
+        "version": "1.0.3"
+      },
+      {
+        "name": "generator-jhipster-leafletmap",
+        "version": "1.0.5"
+      },
+      {
+        "name": "generator-jhipster-obfuscation-at-rest",
+        "version": "0.3.0"
+      }
+    ],
+    "enableTranslation": false
+  }
+}
