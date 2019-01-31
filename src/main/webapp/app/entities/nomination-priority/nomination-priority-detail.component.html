@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="nominationPriority">
+            <h2><span>Nomination Priority</span> {{nominationPriority.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Gas Date</span></dt>
+                <dd>
+                    <span>{{nominationPriority.gasDate}}</span>
+                </dd>
+                <dt><span>Prty Tp</span></dt>
+                <dd>
+                    <span>{{nominationPriority.prtyTp}}</span>
+                </dd>
+                <dt><span>Old Qty</span></dt>
+                <dd>
+                    <span>{{nominationPriority.oldQty}}</span>
+                </dd>
+                <dt><span>New Qty</span></dt>
+                <dd>
+                    <span>{{nominationPriority.newQty}}</span>
+                </dd>
+                <dt><span>Sub Type</span></dt>
+                <dd>
+                    <span>{{nominationPriority.subType}}</span>
+                </dd>
+                <dt><span>Dir Of Flow</span></dt>
+                <dd>
+                    <span>{{nominationPriority.dirOfFlow}}</span>
+                </dd>
+                <dt><span>Updater</span></dt>
+                <dd>
+                    <span>{{nominationPriority.updater}}</span>
+                </dd>
+                <dt><span>Update Time Stamp</span></dt>
+                <dd>
+                    <span>{{nominationPriority.updateTimeStamp}}</span>
+                </dd>
+                <dt><span>Business Unit</span></dt>
+                <dd>
+                    <span>{{nominationPriority.businessUnit}}</span>
+                </dd>
+                <dt><span>Nomination</span></dt>
+                <dd>
+                    <div *ngIf="nominationPriority.nominationId">
+                        <a [routerLink]="['/nomination', nominationPriority.nominationId, 'view']">{{nominationPriority.nominationId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Activity</span></dt>
+                <dd>
+                    <div *ngIf="nominationPriority.activityId">
+                        <a [routerLink]="['/activity', nominationPriority.activityId, 'view']">{{nominationPriority.activityActivityNbr}}</a>
+                    </div>
+                </dd>
+                <dt><span>Contract</span></dt>
+                <dd>
+                    <div *ngIf="nominationPriority.contractId">
+                        <a [routerLink]="['/contract', nominationPriority.contractId, 'view']">{{nominationPriority.contractContrId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/nomination-priority', nominationPriority.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

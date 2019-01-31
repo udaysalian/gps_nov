@@ -1,0 +1,97 @@
+{
+    "name": "Nomination",
+    "fields": [
+        {
+            "fieldName": "gasDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "requestedRcptQty",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "reqestedDlvryQty",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "scheduledRcptQty",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "scheduledDlvryQty",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldName": "requestStatus",
+            "fieldType": "NomRequestStatus",
+            "fieldValues": "NOMINATED,REJECTED,ACCEPTED"
+        },
+        {
+            "fieldName": "updater",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updateTimeStamp",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "businessUnit",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "activity",
+            "otherEntityName": "activity",
+            "otherEntityField": "activityNbr",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "nomination"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "contract",
+            "otherEntityName": "contract",
+            "otherEntityField": "contrId",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "nomination"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "priorities",
+            "otherEntityName": "nominationPriority",
+            "otherEntityRelationshipName": "nomination"
+        }
+    ],
+    "changelogDate": "20181006233747",
+    "entityTableName": "contr_nom",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

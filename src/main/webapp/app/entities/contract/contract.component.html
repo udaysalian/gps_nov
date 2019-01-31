@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span>Contracts</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-contract" [routerLink]="['/contract/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Contract
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="contracts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Contr Id</span></th>
+            <th><span>Status</span></th>
+            <th><span>Updater</span></th>
+            <th><span>Update Time Stamp</span></th>
+            <th><span>Business Unit</span></th>
+            <th><span>Rt Sched</span></th>
+            <th><span>Bus Assoc</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contract of contracts ;trackBy: trackId">
+                <td><a [routerLink]="['/contract', contract.id, 'view' ]">{{contract.id}}</a></td>
+                <td>{{contract.contrId}}</td>
+                <td>{{contract.status}}</td>
+                <td>{{contract.updater}}</td>
+                <td>{{contract.updateTimeStamp | date:'medium'}}</td>
+                <td>{{contract.businessUnit}}</td>
+                <td>
+                    <div *ngIf="contract.rtSchedId">
+                        <a [routerLink]="['../rate-sched', contract.rtSchedId , 'view' ]" >{{contract.rtSchedRateScheduleCD}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="contract.busAssocId">
+                        <a [routerLink]="['../business-associate', contract.busAssocId , 'view' ]" >{{contract.busAssocBaAbbr}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/contract', contract.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/contract', contract.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'contract/'+ contract.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="businessAssociate">
+            <h2><span>Business Associate</span> {{businessAssociate.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Ba Name</span></dt>
+                <dd>
+                    <span>{{businessAssociate.baName}}</span>
+                </dd>
+                <dt><span>Ba Abbr</span></dt>
+                <dd>
+                    <span>{{businessAssociate.baAbbr}}</span>
+                </dd>
+                <dt><span>Ba Nbr</span></dt>
+                <dd>
+                    <span>{{businessAssociate.baNbr}}</span>
+                </dd>
+                <dt><span>Ba Duns Nbr</span></dt>
+                <dd>
+                    <span>{{businessAssociate.baDunsNbr}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/business-associate', businessAssociate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

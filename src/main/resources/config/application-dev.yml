@@ -62,6 +62,24 @@ spring:
         cache-duration: PT1S # 1 second, see the ISO 8601 standard
     thymeleaf:
         cache: false
+    cloud:
+        stream:
+            default:
+                contentType: application/json
+            bindings:
+                input:
+                    destination: topic-jhipster
+                output:
+                    destination: topic-jhipster
+
+                rabbit:
+                    bindings:
+                        output:
+                            producer:
+                                routingKeyExpression: headers.title
+
+
+
 
 # ===================================================================
 # To enable SSL in development, uncomment the the "server.ssl" properties below.
@@ -134,4 +152,5 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
+    loadData: false

@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="nomination">
+            <h2><span>Nomination</span> {{nomination.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Gas Date</span></dt>
+                <dd>
+                    <span>{{nomination.gasDate}}</span>
+                </dd>
+                <dt><span>Requested Rcpt Qty</span></dt>
+                <dd>
+                    <span>{{nomination.requestedRcptQty}}</span>
+                </dd>
+                <dt><span>Reqested Dlvry Qty</span></dt>
+                <dd>
+                    <span>{{nomination.reqestedDlvryQty}}</span>
+                </dd>
+                <dt><span>Scheduled Rcpt Qty</span></dt>
+                <dd>
+                    <span>{{nomination.scheduledRcptQty}}</span>
+                </dd>
+                <dt><span>Scheduled Dlvry Qty</span></dt>
+                <dd>
+                    <span>{{nomination.scheduledDlvryQty}}</span>
+                </dd>
+                <dt><span>Request Status</span></dt>
+                <dd>
+                    <span>{{nomination.requestStatus}}</span>
+                </dd>
+                <dt><span>Updater</span></dt>
+                <dd>
+                    <span>{{nomination.updater}}</span>
+                </dd>
+                <dt><span>Update Time Stamp</span></dt>
+                <dd>
+                    <span>{{nomination.updateTimeStamp}}</span>
+                </dd>
+                <dt><span>Business Unit</span></dt>
+                <dd>
+                    <span>{{nomination.businessUnit}}</span>
+                </dd>
+                <dt><span>Activity</span></dt>
+                <dd>
+                    <div *ngIf="nomination.activityId">
+                        <a [routerLink]="['/activity', nomination.activityId, 'view']">{{nomination.activityActivityNbr}}</a>
+                    </div>
+                </dd>
+                <dt><span>Contract</span></dt>
+                <dd>
+                    <div *ngIf="nomination.contractId">
+                        <a [routerLink]="['/contract', nomination.contractId, 'view']">{{nomination.contractContrId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/nomination', nomination.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

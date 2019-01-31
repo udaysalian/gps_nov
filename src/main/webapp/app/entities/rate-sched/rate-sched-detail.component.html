@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rateSched">
+            <h2><span>Rate Sched</span> {{rateSched.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Rs Type</span></dt>
+                <dd>
+                    <span>{{rateSched.rsType}}</span>
+                </dd>
+                <dt><span>Rate Schedule CD</span></dt>
+                <dd>
+                    <span>{{rateSched.rateScheduleCD}}</span>
+                </dd>
+                <dt><span>Updater</span></dt>
+                <dd>
+                    <span>{{rateSched.updater}}</span>
+                </dd>
+                <dt><span>Update Time Stamp</span></dt>
+                <dd>
+                    <span>{{rateSched.updateTimeStamp}}</span>
+                </dd>
+                <dt><span>Business Unit</span></dt>
+                <dd>
+                    <span>{{rateSched.businessUnit}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rate-sched', rateSched.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

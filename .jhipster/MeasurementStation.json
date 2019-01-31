@@ -1,0 +1,49 @@
+{
+    "name": "MeasurementStation",
+    "fields": [
+        {
+            "fieldName": "locationNbr",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "milepostNbr",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "upstreamPipeNode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "downStreamPipeNode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "businessUnit",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "updater",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updateTimestamp",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181006233757",
+    "entityTableName": "meas_station",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

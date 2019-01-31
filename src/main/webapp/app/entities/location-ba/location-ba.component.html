@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span>Location BAS</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-location-ba" [routerLink]="['/location-ba/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Location BA
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="locationBAS">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Location Nbr</span></th>
+            <th><span>Location BA Type</span></th>
+            <th><span>Business Unit</span></th>
+            <th><span>Updater</span></th>
+            <th><span>Update Timestamp</span></th>
+            <th><span>Bus Assoc</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let locationBA of locationBAS ;trackBy: trackId">
+                <td><a [routerLink]="['/location-ba', locationBA.id, 'view' ]">{{locationBA.id}}</a></td>
+                <td>{{locationBA.locationNbr}}</td>
+                <td>{{locationBA.locationBAType}}</td>
+                <td>{{locationBA.businessUnit}}</td>
+                <td>{{locationBA.updater}}</td>
+                <td>{{locationBA.updateTimestamp | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="locationBA.busAssocId">
+                        <a [routerLink]="['../business-associate', locationBA.busAssocId , 'view' ]" >{{locationBA.busAssocBaAbbr}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/location-ba', locationBA.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/location-ba', locationBA.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'location-ba/'+ locationBA.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

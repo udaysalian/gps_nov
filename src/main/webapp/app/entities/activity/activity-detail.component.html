@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="activity">
+            <h2><span>Activity</span> {{activity.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Contr Id</span></dt>
+                <dd>
+                    <span>{{activity.contrId}}</span>
+                </dd>
+                <dt><span>Activity Nbr</span></dt>
+                <dd>
+                    <span>{{activity.activityNbr}}</span>
+                </dd>
+                <dt><span>Transaction Type</span></dt>
+                <dd>
+                    <span>{{activity.transactionType}}</span>
+                </dd>
+                <dt><span>Updater</span></dt>
+                <dd>
+                    <span>{{activity.updater}}</span>
+                </dd>
+                <dt><span>Update Time Stamp</span></dt>
+                <dd>
+                    <span>{{activity.updateTimeStamp}}</span>
+                </dd>
+                <dt><span>Business Unit</span></dt>
+                <dd>
+                    <span>{{activity.businessUnit}}</span>
+                </dd>
+                <dt><span>Upstream BA</span></dt>
+                <dd>
+                    <div *ngIf="activity.upstreamBAId">
+                        <a [routerLink]="['/business-associate', activity.upstreamBAId, 'view']">{{activity.upstreamBABaAbbr}}</a>
+                    </div>
+                </dd>
+                <dt><span>Downstream BA</span></dt>
+                <dd>
+                    <div *ngIf="activity.downstreamBAId">
+                        <a [routerLink]="['/business-associate', activity.downstreamBAId, 'view']">{{activity.downstreamBABaAbbr}}</a>
+                    </div>
+                </dd>
+                <dt><span>Rt Sched</span></dt>
+                <dd>
+                    <div *ngIf="activity.rtSchedId">
+                        <a [routerLink]="['/rate-sched', activity.rtSchedId, 'view']">{{activity.rtSchedRateScheduleCD}}</a>
+                    </div>
+                </dd>
+                <dt><span>Receipt Location</span></dt>
+                <dd>
+                    <div *ngIf="activity.receiptLocationId">
+                        <a [routerLink]="['/measurement-station', activity.receiptLocationId, 'view']">{{activity.receiptLocationLocationNbr}}</a>
+                    </div>
+                </dd>
+                <dt><span>Delivery Location</span></dt>
+                <dd>
+                    <div *ngIf="activity.deliveryLocationId">
+                        <a [routerLink]="['/measurement-station', activity.deliveryLocationId, 'view']">{{activity.deliveryLocationLocationNbr}}</a>
+                    </div>
+                </dd>
+                <dt><span>Upstream Contract</span></dt>
+                <dd>
+                    <div *ngIf="activity.upstreamContractId">
+                        <a [routerLink]="['/contract', activity.upstreamContractId, 'view']">{{activity.upstreamContractContrId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Downstream Contract</span></dt>
+                <dd>
+                    <div *ngIf="activity.downstreamContractId">
+                        <a [routerLink]="['/contract', activity.downstreamContractId, 'view']">{{activity.downstreamContractContrId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/activity', activity.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

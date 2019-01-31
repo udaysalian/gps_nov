@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rateSchedVald">
+            <h2><span>Rate Sched Vald</span> {{rateSchedVald.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Valid Type</span></dt>
+                <dd>
+                    <span>{{rateSchedVald.validType}}</span>
+                </dd>
+                <dt><span>Updater</span></dt>
+                <dd>
+                    <span>{{rateSchedVald.updater}}</span>
+                </dd>
+                <dt><span>Update Time Stamp</span></dt>
+                <dd>
+                    <span>{{rateSchedVald.updateTimeStamp}}</span>
+                </dd>
+                <dt><span>Business Unit</span></dt>
+                <dd>
+                    <span>{{rateSchedVald.businessUnit}}</span>
+                </dd>
+                <dt><span>Rate Schd</span></dt>
+                <dd>
+                    <div *ngIf="rateSchedVald.rateSchdId">
+                        <a [routerLink]="['/rate-sched', rateSchedVald.rateSchdId, 'view']">{{rateSchedVald.rateSchdRateScheduleCD}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rate-sched-vald', rateSchedVald.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

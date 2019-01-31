@@ -1,0 +1,106 @@
+<div>
+    <h2 id="page-heading">
+        <span>Activities</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-activity" [routerLink]="['/activity/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Activity
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="activities">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Contr Id</span></th>
+            <th><span>Activity Nbr</span></th>
+            <th><span>Transaction Type</span></th>
+            <th><span>Updater</span></th>
+            <th><span>Update Time Stamp</span></th>
+            <th><span>Business Unit</span></th>
+            <th><span>Upstream BA</span></th>
+            <th><span>Downstream BA</span></th>
+            <th><span>Rt Sched</span></th>
+            <th><span>Receipt Location</span></th>
+            <th><span>Delivery Location</span></th>
+            <th><span>Upstream Contract</span></th>
+            <th><span>Downstream Contract</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let activity of activities ;trackBy: trackId">
+                <td><a [routerLink]="['/activity', activity.id, 'view' ]">{{activity.id}}</a></td>
+                <td>{{activity.contrId}}</td>
+                <td>{{activity.activityNbr}}</td>
+                <td>{{activity.transactionType}}</td>
+                <td>{{activity.updater}}</td>
+                <td>{{activity.updateTimeStamp | date:'medium'}}</td>
+                <td>{{activity.businessUnit}}</td>
+                <td>
+                    <div *ngIf="activity.upstreamBAId">
+                        <a [routerLink]="['../business-associate', activity.upstreamBAId , 'view' ]" >{{activity.upstreamBABaAbbr}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="activity.downstreamBAId">
+                        <a [routerLink]="['../business-associate', activity.downstreamBAId , 'view' ]" >{{activity.downstreamBABaAbbr}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="activity.rtSchedId">
+                        <a [routerLink]="['../rate-sched', activity.rtSchedId , 'view' ]" >{{activity.rtSchedRateScheduleCD}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="activity.receiptLocationId">
+                        <a [routerLink]="['../measurement-station', activity.receiptLocationId , 'view' ]" >{{activity.receiptLocationLocationNbr}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="activity.deliveryLocationId">
+                        <a [routerLink]="['../measurement-station', activity.deliveryLocationId , 'view' ]" >{{activity.deliveryLocationLocationNbr}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="activity.upstreamContractId">
+                        <a [routerLink]="['../contract', activity.upstreamContractId , 'view' ]" >{{activity.upstreamContractContrId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="activity.downstreamContractId">
+                        <a [routerLink]="['../contract', activity.downstreamContractId , 'view' ]" >{{activity.downstreamContractContrId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/activity', activity.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/activity', activity.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'activity/'+ activity.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contrLoc">
+            <h2><span>Contr Loc</span> {{contrLoc.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Type</span></dt>
+                <dd>
+                    <span>{{contrLoc.type}}</span>
+                </dd>
+                <dt><span>Quantity</span></dt>
+                <dd>
+                    <span>{{contrLoc.quantity}}</span>
+                </dd>
+                <dt><span>Effective From Date</span></dt>
+                <dd>
+                    <span>{{contrLoc.effectiveFromDate}}</span>
+                </dd>
+                <dt><span>Effective To Date</span></dt>
+                <dd>
+                    <span>{{contrLoc.effectiveToDate}}</span>
+                </dd>
+                <dt><span>Updater</span></dt>
+                <dd>
+                    <span>{{contrLoc.updater}}</span>
+                </dd>
+                <dt><span>Update Time Stamp</span></dt>
+                <dd>
+                    <span>{{contrLoc.updateTimeStamp}}</span>
+                </dd>
+                <dt><span>Business Unit</span></dt>
+                <dd>
+                    <span>{{contrLoc.businessUnit}}</span>
+                </dd>
+                <dt><span>Contract</span></dt>
+                <dd>
+                    <div *ngIf="contrLoc.contractId">
+                        <a [routerLink]="['/contract', contrLoc.contractId, 'view']">{{contrLoc.contractId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Location</span></dt>
+                <dd>
+                    <div *ngIf="contrLoc.locationId">
+                        <a [routerLink]="['/measurement-station', contrLoc.locationId, 'view']">{{contrLoc.locationLocationNbr}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/contr-loc', contrLoc.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

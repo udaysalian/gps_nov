@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="locationBA">
+            <h2><span>Location BA</span> {{locationBA.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Location Nbr</span></dt>
+                <dd>
+                    <span>{{locationBA.locationNbr}}</span>
+                </dd>
+                <dt><span>Location BA Type</span></dt>
+                <dd>
+                    <span>{{locationBA.locationBAType}}</span>
+                </dd>
+                <dt><span>Business Unit</span></dt>
+                <dd>
+                    <span>{{locationBA.businessUnit}}</span>
+                </dd>
+                <dt><span>Updater</span></dt>
+                <dd>
+                    <span>{{locationBA.updater}}</span>
+                </dd>
+                <dt><span>Update Timestamp</span></dt>
+                <dd>
+                    <span>{{locationBA.updateTimestamp}}</span>
+                </dd>
+                <dt><span>Bus Assoc</span></dt>
+                <dd>
+                    <div *ngIf="locationBA.busAssocId">
+                        <a [routerLink]="['/business-associate', locationBA.busAssocId, 'view']">{{locationBA.busAssocBaAbbr}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/location-ba', locationBA.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

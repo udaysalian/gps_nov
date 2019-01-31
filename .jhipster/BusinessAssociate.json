@@ -1,0 +1,50 @@
+{
+    "name": "BusinessAssociate",
+    "fields": [
+        {
+            "fieldName": "baName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "baAbbr",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "baNbr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "baDunsNbr",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contracts",
+            "otherEntityName": "contract",
+            "otherEntityRelationshipName": "busAssoc"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "businessAssociateAddress",
+            "otherEntityName": "businessAssociateAddress",
+            "otherEntityRelationshipName": "businessAssociate"
+        }
+    ],
+    "changelogDate": "20181006233755",
+    "entityTableName": "bus_assoc",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

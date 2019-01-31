@@ -1,0 +1,66 @@
+<div>
+    <h2 id="page-heading">
+        <span>Rate Sched Valds</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-rate-sched-vald" [routerLink]="['/rate-sched-vald/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Rate Sched Vald
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="rateSchedValds">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Valid Type</span></th>
+            <th><span>Updater</span></th>
+            <th><span>Update Time Stamp</span></th>
+            <th><span>Business Unit</span></th>
+            <th><span>Rate Schd</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rateSchedVald of rateSchedValds ;trackBy: trackId">
+                <td><a [routerLink]="['/rate-sched-vald', rateSchedVald.id, 'view' ]">{{rateSchedVald.id}}</a></td>
+                <td>{{rateSchedVald.validType}}</td>
+                <td>{{rateSchedVald.updater}}</td>
+                <td>{{rateSchedVald.updateTimeStamp | date:'medium'}}</td>
+                <td>{{rateSchedVald.businessUnit}}</td>
+                <td>
+                    <div *ngIf="rateSchedVald.rateSchdId">
+                        <a [routerLink]="['../rate-sched', rateSchedVald.rateSchdId , 'view' ]" >{{rateSchedVald.rateSchdRateScheduleCD}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/rate-sched-vald', rateSchedVald.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/rate-sched-vald', rateSchedVald.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rate-sched-vald/'+ rateSchedVald.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

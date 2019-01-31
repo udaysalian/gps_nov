@@ -1,0 +1,123 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-activity-heading">Create or edit a Activity</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!activity.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="activity.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_contrId">Contr Id</label>
+                    <input type="text" class="form-control" name="contrId" id="field_contrId"
+                        [(ngModel)]="activity.contrId" required/>
+                    <div [hidden]="!(editForm.controls.contrId?.dirty && editForm.controls.contrId?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.contrId?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_activityNbr">Activity Nbr</label>
+                    <input type="text" class="form-control" name="activityNbr" id="field_activityNbr"
+                        [(ngModel)]="activity.activityNbr" required/>
+                    <div [hidden]="!(editForm.controls.activityNbr?.dirty && editForm.controls.activityNbr?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.activityNbr?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_transactionType">Transaction Type</label>
+                    <input type="text" class="form-control" name="transactionType" id="field_transactionType"
+                        [(ngModel)]="activity.transactionType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updater">Updater</label>
+                    <input type="text" class="form-control" name="updater" id="field_updater"
+                        [(ngModel)]="activity.updater" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updateTimeStamp">Update Time Stamp</label>
+                    <div class="d-flex">
+                        <input id="field_updateTimeStamp" type="datetime-local" class="form-control" name="updateTimeStamp" [(ngModel)]="updateTimeStamp"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_businessUnit">Business Unit</label>
+                    <input type="text" class="form-control" name="businessUnit" id="field_businessUnit"
+                        [(ngModel)]="activity.businessUnit" required/>
+                    <div [hidden]="!(editForm.controls.businessUnit?.dirty && editForm.controls.businessUnit?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.businessUnit?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_upstreamBA">Upstream BA</label>
+                    <select class="form-control" id="field_upstreamBA" name="upstreamBA" [(ngModel)]="activity.upstreamBAId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="businessAssociateOption.id" *ngFor="let businessAssociateOption of upstreambas; trackBy: trackBusinessAssociateById">{{businessAssociateOption.baAbbr}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_downstreamBA">Downstream BA</label>
+                    <select class="form-control" id="field_downstreamBA" name="downstreamBA" [(ngModel)]="activity.downstreamBAId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="businessAssociateOption.id" *ngFor="let businessAssociateOption of downstreambas; trackBy: trackBusinessAssociateById">{{businessAssociateOption.baAbbr}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rtSched">Rt Sched</label>
+                    <select class="form-control" id="field_rtSched" name="rtSched" [(ngModel)]="activity.rtSchedId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rateSchedOption.id" *ngFor="let rateSchedOption of ratescheds; trackBy: trackRateSchedById">{{rateSchedOption.rateScheduleCD}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_receiptLocation">Receipt Location</label>
+                    <select class="form-control" id="field_receiptLocation" name="receiptLocation" [(ngModel)]="activity.receiptLocationId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="measurementStationOption.id" *ngFor="let measurementStationOption of measurementstations; trackBy: trackMeasurementStationById">{{measurementStationOption.locationNbr}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deliveryLocation">Delivery Location</label>
+                    <select class="form-control" id="field_deliveryLocation" name="deliveryLocation" [(ngModel)]="activity.deliveryLocationId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="measurementStationOption.id" *ngFor="let measurementStationOption of measurementstations; trackBy: trackMeasurementStationById">{{measurementStationOption.locationNbr}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_upstreamContract">Upstream Contract</label>
+                    <select class="form-control" id="field_upstreamContract" name="upstreamContract" [(ngModel)]="activity.upstreamContractId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="contractOption.id" *ngFor="let contractOption of contracts; trackBy: trackContractById">{{contractOption.contrId}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_downstreamContract">Downstream Contract</label>
+                    <select class="form-control" id="field_downstreamContract" name="downstreamContract" [(ngModel)]="activity.downstreamContractId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="contractOption.id" *ngFor="let contractOption of contracts; trackBy: trackContractById">{{contractOption.contrId}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span>Nominations</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-nomination" [routerLink]="['/nomination/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Nomination
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="nominations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Gas Date</span></th>
+            <th><span>Requested Rcpt Qty</span></th>
+            <th><span>Reqested Dlvry Qty</span></th>
+            <th><span>Scheduled Rcpt Qty</span></th>
+            <th><span>Scheduled Dlvry Qty</span></th>
+            <th><span>Request Status</span></th>
+            <th><span>Updater</span></th>
+            <th><span>Update Time Stamp</span></th>
+            <th><span>Business Unit</span></th>
+            <th><span>Activity</span></th>
+            <th><span>Contract</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let nomination of nominations ;trackBy: trackId">
+                <td><a [routerLink]="['/nomination', nomination.id, 'view' ]">{{nomination.id}}</a></td>
+                <td>{{nomination.gasDate | date:'mediumDate'}}</td>
+                <td>{{nomination.requestedRcptQty}}</td>
+                <td>{{nomination.reqestedDlvryQty}}</td>
+                <td>{{nomination.scheduledRcptQty}}</td>
+                <td>{{nomination.scheduledDlvryQty}}</td>
+                <td>{{nomination.requestStatus}}</td>
+                <td>{{nomination.updater}}</td>
+                <td>{{nomination.updateTimeStamp | date:'medium'}}</td>
+                <td>{{nomination.businessUnit}}</td>
+                <td>
+                    <div *ngIf="nomination.activityId">
+                        <a [routerLink]="['../activity', nomination.activityId , 'view' ]" >{{nomination.activityActivityNbr}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="nomination.contractId">
+                        <a [routerLink]="['../contract', nomination.contractId , 'view' ]" >{{nomination.contractContrId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/nomination', nomination.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/nomination', nomination.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'nomination/'+ nomination.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

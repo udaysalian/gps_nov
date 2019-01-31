@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contact">
+            <h2><span>Contact</span> {{contact.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>First Name</span></dt>
+                <dd>
+                    <span>{{contact.firstName}}</span>
+                </dd>
+                <dt><span>Last Name</span></dt>
+                <dd>
+                    <span>{{contact.lastName}}</span>
+                </dd>
+                <dt><span>Updater</span></dt>
+                <dd>
+                    <span>{{contact.updater}}</span>
+                </dd>
+                <dt><span>Update Timestamp</span></dt>
+                <dd>
+                    <span>{{contact.updateTimestamp}}</span>
+                </dd>
+                <dt><span>Login Id</span></dt>
+                <dd>
+                    {{contact.loginIdLogin}}
+                </dd>
+                <dt><span>Employed By</span></dt>
+                <dd>
+                    <div *ngIf="contact.employedById">
+                        <a [routerLink]="['/business-associate', contact.employedById, 'view']">{{contact.employedByBaAbbr}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/contact', contact.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

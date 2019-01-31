@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="businessUnit">
+            <h2><span>Business Unit</span> {{businessUnit.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Business Unit</span></dt>
+                <dd>
+                    <span>{{businessUnit.businessUnit}}</span>
+                </dd>
+                <dt><span>Business Associate Nbr</span></dt>
+                <dd>
+                    <span>{{businessUnit.businessAssociateNbr}}</span>
+                </dd>
+                <dt><span>Edi Pipe Id</span></dt>
+                <dd>
+                    <span>{{businessUnit.ediPipeId}}</span>
+                </dd>
+                <dt><span>Company Logo</span></dt>
+                <dd>
+                    <div *ngIf="businessUnit.companyLogo">
+                        <a (click)="openFile(businessUnit.companyLogoContentType, businessUnit.companyLogo)">
+                            <img [src]="'data:' + businessUnit.companyLogoContentType + ';base64,' + businessUnit.companyLogo" style="max-width: 100%;" alt="businessUnit image"/>
+                        </a>
+                        {{businessUnit.companyLogoContentType}}, {{byteSize(businessUnit.companyLogo)}}
+                    </div>
+                </dd>
+                <dt><span>Updater</span></dt>
+                <dd>
+                    <span>{{businessUnit.updater}}</span>
+                </dd>
+                <dt><span>Update Timestamp</span></dt>
+                <dd>
+                    <span>{{businessUnit.updateTimestamp}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/business-unit', businessUnit.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

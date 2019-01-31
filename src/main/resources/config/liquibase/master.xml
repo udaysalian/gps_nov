@@ -5,6 +5,31 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233747_added_entity_Nomination.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233748_added_entity_ReductionReason.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233749_added_entity_Activity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233750_added_entity_RateSched.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233751_added_entity_RateSchedVald.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233752_added_entity_NominationPriority.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233753_added_entity_Contract.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233754_added_entity_ContrLoc.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233755_added_entity_BusinessAssociate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233756_added_entity_BusinessAssociateAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233757_added_entity_MeasurementStation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233758_added_entity_LocationBA.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233759_added_entity_Contact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233800_added_entity_BusinessUnit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233801_added_entity_BusinessAssociateContact.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20181006233747_added_entity_constraints_Nomination.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233749_added_entity_constraints_Activity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233751_added_entity_constraints_RateSchedVald.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233752_added_entity_constraints_NominationPriority.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233753_added_entity_constraints_Contract.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233754_added_entity_constraints_ContrLoc.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233756_added_entity_constraints_BusinessAssociateAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233758_added_entity_constraints_LocationBA.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233759_added_entity_constraints_Contact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20181006233801_added_entity_constraints_BusinessAssociateContact.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

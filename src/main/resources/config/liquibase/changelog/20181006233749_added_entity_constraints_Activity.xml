@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Activity.
+    -->
+    <changeSet id="20181006233749-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="upstreamba_id"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity_upstreamba_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bus_assoc"/>
+
+        <addForeignKeyConstraint baseColumnNames="downstreamba_id"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity_downstreamba_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bus_assoc"/>
+
+        <addForeignKeyConstraint baseColumnNames="rt_sched_id"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity_rt_sched_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rt_sched"/>
+
+        <addForeignKeyConstraint baseColumnNames="receipt_location_id"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity_receipt_location_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="meas_station"/>
+
+        <addForeignKeyConstraint baseColumnNames="delivery_location_id"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity_delivery_location_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="meas_station"/>
+
+        <addForeignKeyConstraint baseColumnNames="upstream_contract_id"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity_upstream_contract_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contract"/>
+
+        <addForeignKeyConstraint baseColumnNames="downstream_contract_id"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity_downstream_contract_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contract"/>
+
+    </changeSet>
+</databaseChangeLog>

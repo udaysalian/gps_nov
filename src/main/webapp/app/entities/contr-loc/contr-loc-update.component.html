@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-contr-loc-heading">Create or edit a Contr Loc</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!contrLoc.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="contrLoc.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <input type="text" class="form-control" name="type" id="field_type"
+                        [(ngModel)]="contrLoc.type" required/>
+                    <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.type?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_quantity">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="field_quantity"
+                        [(ngModel)]="contrLoc.quantity" min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.quantity?.dirty && editForm.controls.quantity?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.quantity?.errors?.min">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.quantity?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_effectiveFromDate">Effective From Date</label>
+                    <div class="input-group">
+                        <input id="field_effectiveFromDate" type="text" class="form-control" name="effectiveFromDate" ngbDatepicker  #effectiveFromDateDp="ngbDatepicker" [(ngModel)]="contrLoc.effectiveFromDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="effectiveFromDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_effectiveToDate">Effective To Date</label>
+                    <div class="input-group">
+                        <input id="field_effectiveToDate" type="text" class="form-control" name="effectiveToDate" ngbDatepicker  #effectiveToDateDp="ngbDatepicker" [(ngModel)]="contrLoc.effectiveToDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="effectiveToDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updater">Updater</label>
+                    <input type="text" class="form-control" name="updater" id="field_updater"
+                        [(ngModel)]="contrLoc.updater" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updateTimeStamp">Update Time Stamp</label>
+                    <div class="d-flex">
+                        <input id="field_updateTimeStamp" type="datetime-local" class="form-control" name="updateTimeStamp" [(ngModel)]="updateTimeStamp"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_businessUnit">Business Unit</label>
+                    <input type="text" class="form-control" name="businessUnit" id="field_businessUnit"
+                        [(ngModel)]="contrLoc.businessUnit" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_contract">Contract</label>
+                    <select class="form-control" id="field_contract" name="contract" [(ngModel)]="contrLoc.contractId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="contractOption.id" *ngFor="let contractOption of contracts; trackBy: trackContractById">{{contractOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_location">Location</label>
+                    <select class="form-control" id="field_location" name="location" [(ngModel)]="contrLoc.locationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="measurementStationOption.id" *ngFor="let measurementStationOption of locations; trackBy: trackMeasurementStationById">{{measurementStationOption.locationNbr}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

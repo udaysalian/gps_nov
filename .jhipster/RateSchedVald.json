@@ -1,0 +1,38 @@
+{
+    "name": "RateSchedVald",
+    "fields": [
+        {
+            "fieldName": "validType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updater",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updateTimeStamp",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "businessUnit",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "rateSchd",
+            "otherEntityName": "rateSched",
+            "otherEntityField": "rateScheduleCD"
+        }
+    ],
+    "changelogDate": "20181006233751",
+    "entityTableName": "rt_sched_vald",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-rate-sched-heading">Create or edit a Rate Sched</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!rateSched.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="rateSched.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rsType">Rs Type</label>
+                    <input type="text" class="form-control" name="rsType" id="field_rsType"
+                        [(ngModel)]="rateSched.rsType" required/>
+                    <div [hidden]="!(editForm.controls.rsType?.dirty && editForm.controls.rsType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.rsType?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rateScheduleCD">Rate Schedule CD</label>
+                    <input type="text" class="form-control" name="rateScheduleCD" id="field_rateScheduleCD"
+                        [(ngModel)]="rateSched.rateScheduleCD" required/>
+                    <div [hidden]="!(editForm.controls.rateScheduleCD?.dirty && editForm.controls.rateScheduleCD?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.rateScheduleCD?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updater">Updater</label>
+                    <input type="text" class="form-control" name="updater" id="field_updater"
+                        [(ngModel)]="rateSched.updater" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updateTimeStamp">Update Time Stamp</label>
+                    <div class="d-flex">
+                        <input id="field_updateTimeStamp" type="datetime-local" class="form-control" name="updateTimeStamp" [(ngModel)]="updateTimeStamp"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_businessUnit">Business Unit</label>
+                    <input type="text" class="form-control" name="businessUnit" id="field_businessUnit"
+                        [(ngModel)]="rateSched.businessUnit" required/>
+                    <div [hidden]="!(editForm.controls.businessUnit?.dirty && editForm.controls.businessUnit?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.businessUnit?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

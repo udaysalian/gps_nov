@@ -1,0 +1,145 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-nomination-heading">Create or edit a Nomination</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!nomination.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="nomination.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_gasDate">Gas Date</label>
+                    <div class="input-group">
+                        <input id="field_gasDate" type="text" class="form-control" name="gasDate" ngbDatepicker  #gasDateDp="ngbDatepicker" [(ngModel)]="nomination.gasDate"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="gasDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.gasDate?.dirty && editForm.controls.gasDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.gasDate?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_requestedRcptQty">Requested Rcpt Qty</label>
+                    <input type="number" class="form-control" name="requestedRcptQty" id="field_requestedRcptQty"
+                        [(ngModel)]="nomination.requestedRcptQty" min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.requestedRcptQty?.dirty && editForm.controls.requestedRcptQty?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.requestedRcptQty?.errors?.min">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.requestedRcptQty?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reqestedDlvryQty">Reqested Dlvry Qty</label>
+                    <input type="number" class="form-control" name="reqestedDlvryQty" id="field_reqestedDlvryQty"
+                        [(ngModel)]="nomination.reqestedDlvryQty" min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.reqestedDlvryQty?.dirty && editForm.controls.reqestedDlvryQty?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.reqestedDlvryQty?.errors?.min">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.reqestedDlvryQty?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_scheduledRcptQty">Scheduled Rcpt Qty</label>
+                    <input type="number" class="form-control" name="scheduledRcptQty" id="field_scheduledRcptQty"
+                        [(ngModel)]="nomination.scheduledRcptQty" min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.scheduledRcptQty?.dirty && editForm.controls.scheduledRcptQty?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.scheduledRcptQty?.errors?.min">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.scheduledRcptQty?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_scheduledDlvryQty">Scheduled Dlvry Qty</label>
+                    <input type="number" class="form-control" name="scheduledDlvryQty" id="field_scheduledDlvryQty"
+                        [(ngModel)]="nomination.scheduledDlvryQty" min="0" jhiMin="0"/>
+                    <div [hidden]="!(editForm.controls.scheduledDlvryQty?.dirty && editForm.controls.scheduledDlvryQty?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.scheduledDlvryQty?.errors?.min">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.scheduledDlvryQty?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_requestStatus">Request Status</label>
+                    <select class="form-control" name="requestStatus" [(ngModel)]="nomination.requestStatus" id="field_requestStatus" >
+                        <option value="NOMINATED">NOMINATED</option>
+                        <option value="REJECTED">REJECTED</option>
+                        <option value="ACCEPTED">ACCEPTED</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updater">Updater</label>
+                    <input type="text" class="form-control" name="updater" id="field_updater"
+                        [(ngModel)]="nomination.updater" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updateTimeStamp">Update Time Stamp</label>
+                    <div class="d-flex">
+                        <input id="field_updateTimeStamp" type="datetime-local" class="form-control" name="updateTimeStamp" [(ngModel)]="updateTimeStamp"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_businessUnit">Business Unit</label>
+                    <input type="text" class="form-control" name="businessUnit" id="field_businessUnit"
+                        [(ngModel)]="nomination.businessUnit" required/>
+                    <div [hidden]="!(editForm.controls.businessUnit?.dirty && editForm.controls.businessUnit?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.businessUnit?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_activity">Activity</label>
+                    <select class="form-control" id="field_activity" name="activity" [(ngModel)]="nomination.activityId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="activityOption.id" *ngFor="let activityOption of activities; trackBy: trackActivityById">{{activityOption.activityNbr}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_contract">Contract</label>
+                    <select class="form-control" id="field_contract" name="contract" [(ngModel)]="nomination.contractId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="contractOption.id" *ngFor="let contractOption of contracts; trackBy: trackContractById">{{contractOption.contrId}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

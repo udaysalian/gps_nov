@@ -1,0 +1,40 @@
+{
+    "name": "BusinessUnit",
+    "fields": [
+        {
+            "fieldName": "businessUnit",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "businessAssociateNbr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ediPipeId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "companyLogo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "updater",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updateTimestamp",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181006233800",
+    "entityTableName": "business_unit",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

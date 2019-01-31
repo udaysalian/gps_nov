@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-measurement-station-heading">Create or edit a Measurement Station</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!measurementStation.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="measurementStation.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_locationNbr">Location Nbr</label>
+                    <input type="text" class="form-control" name="locationNbr" id="field_locationNbr"
+                        [(ngModel)]="measurementStation.locationNbr" required/>
+                    <div [hidden]="!(editForm.controls.locationNbr?.dirty && editForm.controls.locationNbr?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.locationNbr?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_milepostNbr">Milepost Nbr</label>
+                    <input type="number" class="form-control" name="milepostNbr" id="field_milepostNbr"
+                        [(ngModel)]="measurementStation.milepostNbr" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_upstreamPipeNode">Upstream Pipe Node</label>
+                    <input type="text" class="form-control" name="upstreamPipeNode" id="field_upstreamPipeNode"
+                        [(ngModel)]="measurementStation.upstreamPipeNode" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_downStreamPipeNode">Down Stream Pipe Node</label>
+                    <input type="text" class="form-control" name="downStreamPipeNode" id="field_downStreamPipeNode"
+                        [(ngModel)]="measurementStation.downStreamPipeNode" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_businessUnit">Business Unit</label>
+                    <input type="text" class="form-control" name="businessUnit" id="field_businessUnit"
+                        [(ngModel)]="measurementStation.businessUnit" required/>
+                    <div [hidden]="!(editForm.controls.businessUnit?.dirty && editForm.controls.businessUnit?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.businessUnit?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updater">Updater</label>
+                    <input type="text" class="form-control" name="updater" id="field_updater"
+                        [(ngModel)]="measurementStation.updater" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updateTimestamp">Update Timestamp</label>
+                    <div class="d-flex">
+                        <input id="field_updateTimestamp" type="datetime-local" class="form-control" name="updateTimestamp" [(ngModel)]="updateTimestamp"
+                        />
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

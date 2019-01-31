@@ -1,0 +1,78 @@
+<div>
+    <h2 id="page-heading">
+        <span>Contr Locs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-contr-loc" [routerLink]="['/contr-loc/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Contr Loc
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="contrLocs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Type</span></th>
+            <th><span>Quantity</span></th>
+            <th><span>Effective From Date</span></th>
+            <th><span>Effective To Date</span></th>
+            <th><span>Updater</span></th>
+            <th><span>Update Time Stamp</span></th>
+            <th><span>Business Unit</span></th>
+            <th><span>Contract</span></th>
+            <th><span>Location</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contrLoc of contrLocs ;trackBy: trackId">
+                <td><a [routerLink]="['/contr-loc', contrLoc.id, 'view' ]">{{contrLoc.id}}</a></td>
+                <td>{{contrLoc.type}}</td>
+                <td>{{contrLoc.quantity}}</td>
+                <td>{{contrLoc.effectiveFromDate | date:'mediumDate'}}</td>
+                <td>{{contrLoc.effectiveToDate | date:'mediumDate'}}</td>
+                <td>{{contrLoc.updater}}</td>
+                <td>{{contrLoc.updateTimeStamp | date:'medium'}}</td>
+                <td>{{contrLoc.businessUnit}}</td>
+                <td>
+                    <div *ngIf="contrLoc.contractId">
+                        <a [routerLink]="['../contract', contrLoc.contractId , 'view' ]" >{{contrLoc.contractId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="contrLoc.locationId">
+                        <a [routerLink]="['../measurement-station', contrLoc.locationId , 'view' ]" >{{contrLoc.locationLocationNbr}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/contr-loc', contrLoc.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/contr-loc', contrLoc.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'contr-loc/'+ contrLoc.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

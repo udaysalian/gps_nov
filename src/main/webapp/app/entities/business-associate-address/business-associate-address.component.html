@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Business Associate Addresses</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-business-associate-address" [routerLink]="['/business-associate-address/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Business Associate Address
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="businessAssociateAddresses">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Add Line 1</span></th>
+            <th><span>Address Nbr</span></th>
+            <th><span>Add Line 2</span></th>
+            <th><span>City</span></th>
+            <th><span>State</span></th>
+            <th><span>Zip Code</span></th>
+            <th><span>Business Associate</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let businessAssociateAddress of businessAssociateAddresses ;trackBy: trackId">
+                <td><a [routerLink]="['/business-associate-address', businessAssociateAddress.id, 'view' ]">{{businessAssociateAddress.id}}</a></td>
+                <td>{{businessAssociateAddress.addLine1}}</td>
+                <td>{{businessAssociateAddress.addressNbr}}</td>
+                <td>{{businessAssociateAddress.addLine2}}</td>
+                <td>{{businessAssociateAddress.city}}</td>
+                <td>{{businessAssociateAddress.state}}</td>
+                <td>{{businessAssociateAddress.zipCode}}</td>
+                <td>
+                    <div *ngIf="businessAssociateAddress.businessAssociateId">
+                        <a [routerLink]="['../business-associate', businessAssociateAddress.businessAssociateId , 'view' ]" >{{businessAssociateAddress.businessAssociateId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/business-associate-address', businessAssociateAddress.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/business-associate-address', businessAssociateAddress.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'business-associate-address/'+ businessAssociateAddress.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

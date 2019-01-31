@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-contract-heading">Create or edit a Contract</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!contract.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="contract.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_contrId">Contr Id</label>
+                    <input type="text" class="form-control" name="contrId" id="field_contrId"
+                        [(ngModel)]="contract.contrId" required/>
+                    <div [hidden]="!(editForm.controls.contrId?.dirty && editForm.controls.contrId?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.contrId?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <input type="text" class="form-control" name="status" id="field_status"
+                        [(ngModel)]="contract.status" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updater">Updater</label>
+                    <input type="text" class="form-control" name="updater" id="field_updater"
+                        [(ngModel)]="contract.updater" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_updateTimeStamp">Update Time Stamp</label>
+                    <div class="d-flex">
+                        <input id="field_updateTimeStamp" type="datetime-local" class="form-control" name="updateTimeStamp" [(ngModel)]="updateTimeStamp"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_businessUnit">Business Unit</label>
+                    <input type="text" class="form-control" name="businessUnit" id="field_businessUnit"
+                        [(ngModel)]="contract.businessUnit" required/>
+                    <div [hidden]="!(editForm.controls.businessUnit?.dirty && editForm.controls.businessUnit?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.businessUnit?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rtSched">Rt Sched</label>
+                    <select class="form-control" id="field_rtSched" name="rtSched" [(ngModel)]="contract.rtSchedId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rateSchedOption.id" *ngFor="let rateSchedOption of ratescheds; trackBy: trackRateSchedById">{{rateSchedOption.rateScheduleCD}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_busAssoc">Bus Assoc</label>
+                    <select class="form-control" id="field_busAssoc" name="busAssoc" [(ngModel)]="contract.busAssocId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="businessAssociateOption.id" *ngFor="let businessAssociateOption of businessassociates; trackBy: trackBusinessAssociateById">{{businessAssociateOption.baAbbr}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

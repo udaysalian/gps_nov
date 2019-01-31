@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span>Business Associate Contacts</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-business-associate-contact" [routerLink]="['/business-associate-contact/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Business Associate Contact
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="businessAssociateContacts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Begin Date</span></th>
+            <th><span>End Date</span></th>
+            <th><span>Business Associate</span></th>
+            <th><span>Mail Address</span></th>
+            <th><span>Delivery Address</span></th>
+            <th><span>Contact</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let businessAssociateContact of businessAssociateContacts ;trackBy: trackId">
+                <td><a [routerLink]="['/business-associate-contact', businessAssociateContact.id, 'view' ]">{{businessAssociateContact.id}}</a></td>
+                <td>{{businessAssociateContact.beginDate | date:'mediumDate'}}</td>
+                <td>{{businessAssociateContact.endDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="businessAssociateContact.businessAssociateId">
+                        <a [routerLink]="['../business-associate', businessAssociateContact.businessAssociateId , 'view' ]" >{{businessAssociateContact.businessAssociateBaAbbr}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="businessAssociateContact.mailAddressId">
+                        <a [routerLink]="['../business-associate-address', businessAssociateContact.mailAddressId , 'view' ]" >{{businessAssociateContact.mailAddressId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="businessAssociateContact.deliveryAddressId">
+                        <a [routerLink]="['../business-associate-address', businessAssociateContact.deliveryAddressId , 'view' ]" >{{businessAssociateContact.deliveryAddressId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="businessAssociateContact.contactId">
+                        <a [routerLink]="['../contact', businessAssociateContact.contactId , 'view' ]" >{{businessAssociateContact.contactId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/business-associate-contact', businessAssociateContact.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/business-associate-contact', businessAssociateContact.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'business-associate-contact/'+ businessAssociateContact.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -31,7 +31,7 @@ public class NetraApp {
     }
 
     /**
-     * Initializes netra.
+     * Initializes netra.exclude patterns:
      * <p>
      * Spring profiles can be configured with a program argument --spring.profiles.active=your-active-profile
      * <p>

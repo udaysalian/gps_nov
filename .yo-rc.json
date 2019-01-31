@@ -64,5 +64,11 @@
       }
     ],
     "enableTranslation": false
+  },
+  "generator-jhipster-spring-cloud-stream": {
+    "promptValues": {
+      "messageBrokerType": "RabbitMQ",
+      "rabbitMqNameOfMessage": "message"
+    }
   }
 }

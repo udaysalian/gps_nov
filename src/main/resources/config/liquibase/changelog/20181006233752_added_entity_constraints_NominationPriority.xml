@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity NominationPriority.
+    -->
+    <changeSet id="20181006233752-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="nomination_id"
+                                 baseTableName="contr_nom_prty"
+                                 constraintName="fk_nomination_priority_nomination_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contr_nom"/>
+
+        <addForeignKeyConstraint baseColumnNames="activity_id"
+                                 baseTableName="contr_nom_prty"
+                                 constraintName="fk_nomination_priority_activity_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="activity"/>
+
+        <addForeignKeyConstraint baseColumnNames="contract_id"
+                                 baseTableName="contr_nom_prty"
+                                 constraintName="fk_nomination_priority_contract_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contract"/>
+
+    </changeSet>
+</databaseChangeLog>

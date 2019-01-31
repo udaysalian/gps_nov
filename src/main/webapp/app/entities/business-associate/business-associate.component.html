@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span>Business Associates</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-business-associate" [routerLink]="['/business-associate/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Business Associate
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="businessAssociates">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Ba Name</span></th>
+            <th><span>Ba Abbr</span></th>
+            <th><span>Ba Nbr</span></th>
+            <th><span>Ba Duns Nbr</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let businessAssociate of businessAssociates ;trackBy: trackId">
+                <td><a [routerLink]="['/business-associate', businessAssociate.id, 'view' ]">{{businessAssociate.id}}</a></td>
+                <td>{{businessAssociate.baName}}</td>
+                <td>{{businessAssociate.baAbbr}}</td>
+                <td>{{businessAssociate.baNbr}}</td>
+                <td>{{businessAssociate.baDunsNbr}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/business-associate', businessAssociate.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/business-associate', businessAssociate.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'business-associate/'+ businessAssociate.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

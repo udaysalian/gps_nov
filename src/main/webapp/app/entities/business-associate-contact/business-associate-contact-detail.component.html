@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="businessAssociateContact">
+            <h2><span>Business Associate Contact</span> {{businessAssociateContact.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Begin Date</span></dt>
+                <dd>
+                    <span>{{businessAssociateContact.beginDate}}</span>
+                </dd>
+                <dt><span>End Date</span></dt>
+                <dd>
+                    <span>{{businessAssociateContact.endDate}}</span>
+                </dd>
+                <dt><span>Business Associate</span></dt>
+                <dd>
+                    <div *ngIf="businessAssociateContact.businessAssociateId">
+                        <a [routerLink]="['/business-associate', businessAssociateContact.businessAssociateId, 'view']">{{businessAssociateContact.businessAssociateBaAbbr}}</a>
+                    </div>
+                </dd>
+                <dt><span>Mail Address</span></dt>
+                <dd>
+                    <div *ngIf="businessAssociateContact.mailAddressId">
+                        <a [routerLink]="['/business-associate-address', businessAssociateContact.mailAddressId, 'view']">{{businessAssociateContact.mailAddressId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Delivery Address</span></dt>
+                <dd>
+                    <div *ngIf="businessAssociateContact.deliveryAddressId">
+                        <a [routerLink]="['/business-associate-address', businessAssociateContact.deliveryAddressId, 'view']">{{businessAssociateContact.deliveryAddressId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Contact</span></dt>
+                <dd>
+                    <div *ngIf="businessAssociateContact.contactId">
+                        <a [routerLink]="['/contact', businessAssociateContact.contactId, 'view']">{{businessAssociateContact.contactId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/business-associate-contact', businessAssociateContact.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

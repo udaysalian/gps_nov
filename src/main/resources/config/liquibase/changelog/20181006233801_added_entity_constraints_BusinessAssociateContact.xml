@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity BusinessAssociateContact.
+    -->
+    <changeSet id="20181006233801-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="business_associate_id"
+                                 baseTableName="ba_contact"
+                                 constraintName="fk_business_associate_contact_business_associate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bus_assoc"/>
+
+        <addForeignKeyConstraint baseColumnNames="mail_address_id"
+                                 baseTableName="ba_contact"
+                                 constraintName="fk_business_associate_contact_mail_address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ba_address"/>
+
+        <addForeignKeyConstraint baseColumnNames="delivery_address_id"
+                                 baseTableName="ba_contact"
+                                 constraintName="fk_business_associate_contact_delivery_address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ba_address"/>
+
+        <addForeignKeyConstraint baseColumnNames="contact_id"
+                                 baseTableName="ba_contact"
+                                 constraintName="fk_business_associate_contact_contact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+    </changeSet>
+</databaseChangeLog>

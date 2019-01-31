@@ -38,6 +38,26 @@ public class CacheConfiguration {
             cm.createCache(com.oilgascs.gps.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.oilgascs.gps.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.oilgascs.gps.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.Nomination.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.Nomination.class.getName() + ".priorities", jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.ReductionReason.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.Activity.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.RateSched.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.RateSched.class.getName() + ".rtSchedValds", jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.RateSchedVald.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.NominationPriority.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.Contract.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.Contract.class.getName() + ".contrLocs", jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.ContrLoc.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.BusinessAssociate.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.BusinessAssociate.class.getName() + ".contracts", jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.BusinessAssociate.class.getName() + ".businessAssociateAddresses", jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.BusinessAssociateAddress.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.MeasurementStation.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.LocationBA.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.Contact.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.BusinessUnit.class.getName(), jcacheConfiguration);
+            cm.createCache(com.oilgascs.gps.domain.BusinessAssociateContact.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

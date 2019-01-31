@@ -1,6 +1,11 @@
 package com.oilgascs.gps.security;
 
+import com.oilgascs.gps.domain.BusinessAssociate;
+import com.oilgascs.gps.domain.BusinessUnit;
+import com.oilgascs.gps.domain.Contact;
 import com.oilgascs.gps.domain.User;
+import com.oilgascs.gps.repository.ContactRepository;
+import com.oilgascs.gps.repository.NetraContactRepository;
 import com.oilgascs.gps.repository.UserRepository;
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;
 import org.slf4j.Logger;
@@ -25,9 +30,12 @@ public class DomainUserDetailsService implements UserDetailsService {
     private final Logger log = LoggerFactory.getLogger(DomainUserDetailsService.class);
 
     private final UserRepository userRepository;
+    
+   // private final NetraContactRepository contactRepository;
 
     public DomainUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
+       
     }
 
     @Override
@@ -48,15 +56,24 @@ public class DomainUserDetailsService implements UserDetailsService {
 
     }
 
-    private org.springframework.security.core.userdetails.User createSpringSecurityUser(String lowercaseLogin, User user) {
+    private org.springframework.security.core.userdetails.UserDetails createSpringSecurityUser(String lowercaseLogin, User user) {
         if (!user.getActivated()) {
             throw new UserNotActivatedException("User " + lowercaseLogin + " was not activated");
         }
         List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()
             .map(authority -> new SimpleGrantedAuthority(authority.getName()))
             .collect(Collectors.toList());
+    //    Contact contact = contactRepository.findByUserIsCurrentUser();
+     //   BusinessAssociate emplBy = contact.getEmployedBy();
+        
         return new org.springframework.security.core.userdetails.User(user.getLogin(),
             user.getPassword(),
             grantedAuthorities);
+        
+      /* return new GPSUserDetails(user.getLogin(),
+                user.getPassword(),
+                grantedAuthorities);*/
     }
+    
+   
 }

@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="businessAssociateAddress">
+            <h2><span>Business Associate Address</span> {{businessAssociateAddress.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Add Line 1</span></dt>
+                <dd>
+                    <span>{{businessAssociateAddress.addLine1}}</span>
+                </dd>
+                <dt><span>Address Nbr</span></dt>
+                <dd>
+                    <span>{{businessAssociateAddress.addressNbr}}</span>
+                </dd>
+                <dt><span>Add Line 2</span></dt>
+                <dd>
+                    <span>{{businessAssociateAddress.addLine2}}</span>
+                </dd>
+                <dt><span>City</span></dt>
+                <dd>
+                    <span>{{businessAssociateAddress.city}}</span>
+                </dd>
+                <dt><span>State</span></dt>
+                <dd>
+                    <span>{{businessAssociateAddress.state}}</span>
+                </dd>
+                <dt><span>Zip Code</span></dt>
+                <dd>
+                    <span>{{businessAssociateAddress.zipCode}}</span>
+                </dd>
+                <dt><span>Business Associate</span></dt>
+                <dd>
+                    <div *ngIf="businessAssociateAddress.businessAssociateId">
+                        <a [routerLink]="['/business-associate', businessAssociateAddress.businessAssociateId, 'view']">{{businessAssociateAddress.businessAssociateId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/business-associate-address', businessAssociateAddress.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
