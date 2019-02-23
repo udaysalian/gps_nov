@@ -63,7 +63,8 @@
         "version": "0.3.0"
       }
     ],
-    "enableTranslation": false
+    "enableTranslation": false,
+    "herokuDeployType": "git"
   },
   "generator-jhipster-spring-cloud-stream": {
     "promptValues": {
