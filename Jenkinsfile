@@ -64,16 +64,5 @@ node {
         }
     }
 
-    /* def dockerImage
-    stage('build docker') {
-        sh "cp -R src/main/docker build/"
-        sh "cp build/libs/*.war build/docker/"
-        dockerImage = docker.build('usalian@gmail.com/netra', 'build/docker')
-    }
-
-    stage('publish docker') {
-        docker.withRegistry('https://registry.hub.docker.com', 'usalian@gmail.com') {
-            dockerImage.push 'latest'
-        }
-    } */
+    
 }
