@@ -1,6 +1,5 @@
 import './vendor.ts';
 
-
 import { NgModule, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -20,11 +19,10 @@ import { NetraAccountModule } from './account/account.module';
 import { NetraEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 import { NetraAppNominationNewModule } from './nomination/nominationnew.module';
-import { NetraAppPlacesModule } from './places/places.module';
-import { NetraAppPathNominationModule } from './path-nomination/path-nomination.module';
+
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ErrorComponent } from './layouts';
-import {AgGridModule} from 'ag-grid-angular';
+import { AgGridModule } from 'ag-grid-angular';
 @NgModule({
     imports: [
         BrowserModule,
@@ -35,9 +33,8 @@ import {AgGridModule} from 'ag-grid-angular';
         NetraHomeModule,
         NetraAccountModule,
         NetraEntityModule,
-        NetraAppNominationNewModule,
-        NetraAppPlacesModule,
-        NetraAppPathNominationModule,
+        NetraAppNominationNewModule
+
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
