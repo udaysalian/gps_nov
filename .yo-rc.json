@@ -64,7 +64,8 @@
       }
     ],
     "enableTranslation": false,
-    "herokuDeployType": "git"
+    "herokuDeployType": "git",
+    "herokuAppName": "netra"
   },
   "generator-jhipster-spring-cloud-stream": {
     "promptValues": {
