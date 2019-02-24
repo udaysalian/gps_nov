@@ -53,12 +53,12 @@ spring:
     mail:
         host: smtp.sendgrid.net
         port: 587
-        username:${SENDGRID_USERNAME}
-        password:${SENDGRID_PASSWORD}
-        protocol:smtp
+        username: ${SENDGRID_USERNAME}
+        password: ${SENDGRID_PASSWORD}
+        protocol: smtp
         properties:
             tls: false
-            auth:true
+            auth: true
     thymeleaf:
         cache: true
     cloud:
