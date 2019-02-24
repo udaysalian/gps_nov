@@ -47,22 +47,12 @@ node {
         '''
     }
     stage('packaging') {
-        sh "./gradlew boo        sh "./gradlew bootWar -x test -Pprod -PnodeInstall --no-daemon"
-        archiveArtifacts artifacts: '**/build/libs/*.war', fingerprint: truetest -Pprod -PnodeInstall --no-daemon"
-        archiveArtifacts         sh "./gradlew bootWar -x test -Pprod -PnodeInstall --no-daemon"
-        archiveArtifacts artifacts: '**/build/libs/*.war', fingerprint: trues: '**/build/libs/*.war', fingerprint: true
+        sh "./gradlew bootWar -x test -Pprod -PnodeInstall --no-daemon"
+        archiveArtifacts artifacts: '**/build/libs/*.war', fingerprint: true
     }
 
-    stage('deployment') {        sh "./gradlew bootWar -x test -Pprod -PnodeInstall --no-daemon"
-        archiveArtifacts artifacts: '**/build/libs/*.war', fingerprint: true
+    stage('deployment') {
         sh "./gradlew deployHeroku --no-daemon"
     }
-
-    stage('quality analysis') {
-        withSonarQubeEnv('sonar') {
-            sh "./gradlew sonarqube --no-daemon"
-        }
-    }
-
     
 }
