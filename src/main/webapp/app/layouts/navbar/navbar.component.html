@@ -19,12 +19,7 @@
                 </a>
             </li>
 
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="nomination_new" (click)="collapseNavbar()">
-                    <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
-                    <span>Nomination</span>
-                </a>
-            </li>
+            
 
            
             
@@ -46,6 +41,13 @@
                             <span>Nomination</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="nomination_new" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span>Nomination New</span>
+                        </a>
+                    </li>
+                   
                     <li>
                         <a class="dropdown-item" routerLink="reduction-reason" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
