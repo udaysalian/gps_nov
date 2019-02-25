@@ -91,7 +91,8 @@ public class ContractResource {
     @Timed
     public List<ContractDTO> getAllContracts() {
         log.debug("REST request to get all Contracts");
-        return contractService.findAllContractsForTheCurrentUser();
+        //return contractService.findAllContractsForTheCurrentUser();
+        return contractService.findAll();
     }
 
     /**

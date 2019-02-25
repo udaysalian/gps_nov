@@ -85,7 +85,8 @@ public class NominationResource {
     @Timed
     public List<NominationDTO> getAllNominations() {
         log.debug("REST request to get all Nominations");
-        return nominationService.findAllNomsForTheCurrentUser();
+       // return nominationService.findAllNomsForTheCurrentUser();
+       return nominationService.findAll();
     }
 
     /**
