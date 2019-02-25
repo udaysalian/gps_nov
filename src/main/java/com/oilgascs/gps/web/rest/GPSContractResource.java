@@ -87,7 +87,7 @@ public class GPSContractResource extends ContractResource {
     @Timed
     public List<ContractDTO> getAllContracts() {
         log.debug("REST request to get all Contracts");
-        return contractService.findAll();
+        return contractService.findAllContractsForTheCurrentUser();
     }
 
     /**

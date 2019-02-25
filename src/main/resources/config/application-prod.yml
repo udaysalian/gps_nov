@@ -159,4 +159,4 @@ jhipster:
 # ===================================================================
 
 # application:
-    loadData: false
+    loadData: true
